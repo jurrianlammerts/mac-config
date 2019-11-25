@@ -1,0 +1,114 @@
+{
+	"name": "vscode-autoprefixer",
+	"displayName": "Autoprefixer",
+	"description": "Parse CSS and add vendor prefixes automatically.",
+	"version": "2.2.0",
+	"publisher": "mrmlnc",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.10.0"
+	},
+	"icon": "icon.png",
+	"homepage": "https://github.com/mrmlnc/vscode-autoprefixer/blob/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mrmlnc/vscode-autoprefixer"
+	},
+	"keywords": [
+		"autoprefixer",
+		"prefixes",
+		"postcss",
+		"css",
+		"less"
+	],
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:autoprefixer.execute",
+		"onLanguage:css",
+		"onLanguage:postcss",
+		"onLanguage:less",
+		"onLanguage:scss"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "autoprefixer.execute",
+				"title": "Autoprefix CSS"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Autoprefixer configuration options",
+			"properties": {
+				"autoprefixer.findExternalAutoprefixer": {
+					"type": "boolean",
+					"default": false,
+					"description": "Use an external Autoprefixer package instead of built-in version."
+				},
+				"autoprefixer.browsers": {
+					"type": "array",
+					"default": [
+						"last 2 versions",
+						"> 5%"
+					],
+					"description": "Which browsers you need to support."
+				},
+				"autoprefixer.grid": {
+					"type": "string",
+					"enum": [
+						"autoplace",
+						"no-autoplace",
+						"off"
+					],
+					"default": "off",
+					"description": "The ability to turn on Grid Autoplacement support in IE."
+				},
+				"autoprefixer.formatOnSave": {
+					"type": "boolean",
+					"default": false,
+					"description": "Add vendor prefixes to CSS when you save a file."
+				},
+				"autoprefixer.ignoreFilesOnSave": {
+					"type": "array",
+					"default": [],
+					"description": "An optional array of glob-patterns to ignore files on save."
+				}
+			}
+		}
+	},
+	"devDependencies": {
+		"@types/micromatch": "^3.1.0",
+		"@types/node": "^10.12.18",
+		"rimraf": "^2.6.3",
+		"tslint": "^5.12.0",
+		"tslint-config-xo": "^1.3.0",
+		"typescript": "^3.2.2",
+		"vscode": "^1.1.26"
+	},
+	"dependencies": {
+		"autoprefixer": "^9.4.4",
+		"micromatch": "^3.1.10",
+		"npm-module-path": "^2.0.2",
+		"postcss": "^7.0.7",
+		"postcss-less": "^3.1.0",
+		"postcss-safe-parser": "^4.0.1",
+		"postcss-scss": "^2.0.0",
+		"tslib": "^1.9.3"
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"clean": "rimraf out",
+		"lint": "tslint src/**/*.ts -p .",
+		"compile": "tsc",
+		"build": "npm run clean && npm run lint && npm run compile",
+		"watch": "npm run clean && npm run lint && npm run compile -- --sourceMap --watch"
+	},
+	"__metadata": {
+		"id": "70159dd5-3ca5-4ccc-a7ae-011a662e08c2",
+		"publisherId": "c958976e-9702-4f1a-8bdf-26b7bc012d65",
+		"publisherDisplayName": "mrmlnc"
+	}
+}
