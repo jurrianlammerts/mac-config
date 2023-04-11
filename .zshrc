@@ -35,17 +35,4 @@ source $ZSH/oh-my-zsh.sh
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-chruby ruby-2.7.2
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export ANDROID_NDK_HOME=/usr/local/opt/android-ndk
-
-export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
-export PATH="/opt/homebrew/bin:${PATH}"
-
-export AUTH_TOKEN=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
-export NPM_TOKEN=glpat-U4cZZPpJ4s6NuQ6rwfSxY
 
